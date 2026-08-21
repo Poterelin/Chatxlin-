@@ -1,0 +1,21 @@
+<!-- index.html su GitHub Pages -->
+<script>
+  // Prova a contattare il tuo PC di casa
+  fetch('http://tuo-pc.duckdns.org:8080/favicon.ico', { 
+    mode: 'no-cors',
+    signal: AbortSignal.timeout(2000) 
+  })
+  .then(() => {
+    // PC acceso: sposta l'utente a casa tua
+    window.location.replace('http://tuo-pc.duckdns.org:8080');
+  })
+  .catch(() => {
+    // PC spento: resta su GitHub Pages, mostra il sito statico
+    document.getElementById('fallback').style.display = 'block';
+  });
+</script>
+
+<div id="fallback" style="display:none;">
+  <!-- Qui metti la copia statica del tuo sito -->
+  <h1>Sito in modalità offline</h1>
+</div>
